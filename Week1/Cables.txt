@@ -1,0 +1,16 @@
+Cables:
+-------
+Cables are what connect different devices to each other allowing data to be transmitted over them
+
+2 catagories :
+ Copper, Fibers
+
+The sending device communicates binary data across these copper wires by changing the voltage between two ranges
+
+The most common forms of copper twisted pair cables used in networking are Cat5, Cat5e, and Cat6 cables. 
+
+Crosstalk:
+----------
+Crosstalk is when an electrical pulse on one wire is accidentally detected on another wire. So, the receiving end isn't able to understand the data causing a network error
+
+fiber cables use pulses of light to represent the ones and zeros of the underlying data

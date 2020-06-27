@@ -1,0 +1,15 @@
+HUB:
+----
+A hub is a physical layer device that allows for connections from many computers at once. All the devices connected to a hub will end up talking to all other devices at the same time.
+This causes a lot of noise on the network and creates what's called a collision domain
+
+Collision Domain:
+-----------------
+A collision domain is a network segment where only one device can communicate at a time. If multiple systems try sending data at the same time, the electrical pulses sent across the cable can interfere with each other. This causes these systems to have to wait for a quiet period before they try sending their data again. It really slows down network communications, and is the primary reason hubs are fairly rare. 
+
+
+while a hub is a layer 1 or physical layer device, a switch is a level 2 or data link device.
+
+SWITCH:
+------
+a switch can actually inspect the contents of the Ethernet protocol data being sent around the network, determine which system the data is intended for and then only send that data to that one system.

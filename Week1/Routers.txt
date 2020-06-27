@@ -1,0 +1,7 @@
+If we want to communication between other networks then router is the key.
+It's a layer 3 (Network) device.
+It stores information on it's table about how to route traffic between lots of different networks all over the world. 
+
+BGP:
+---
+ Routers share data with each other via a protocol known as BGP, or Border Gateway Protocol. That lets them learn about the most optimal paths to forward traffic.

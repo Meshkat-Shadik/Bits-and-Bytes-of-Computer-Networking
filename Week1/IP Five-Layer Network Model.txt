@@ -1,0 +1,41 @@
+The TCP/IP Five-Layer Network Model:
+
+Layer No    Layer Name      Protocol            Protocol Data Unit      Addressing
+--------    ----------      --------            ------------------      ----------
+5           Application     HTTP,SMTP               Messaging           n/a
+4           Transport       TCP/UDP                 Segment             port #'s
+3           Network         IP                      Datagram/Packet     IP Address
+2           Data Link       Ethernet/Wi-Fi          Frames              Mac Address
+1           Physical        10Base T, 802.11        Bits                n/a
+
+
+Physical:
+---------
+Cabling, connectors & sending signals
+
+DataLink:
+---------
+is responsible for defining a common way of interpreting these signals, so network devices can communicate. (Same network)
+
+Network(Internet layer):
+------------------------
+Different networks to communicate with each other through devices known as routers.
+
+***Internet : Collection of networks connected together is inter networking (internet).
+
+Transport:
+---------
+Sorts out which client and server programs are supposed to get that data.
+TCP provides mechanisms to ensure that data is reliably delivered while UDP does not. 
+
+Application:
+------------
+User interface.
+
+
+Physical            DataLink            Network         Transport        Application
+-------------------------------------------------------------------------------------
+Delivery Trucks,    How trucks get      which roads     How to knock        item
+Roads               from one intersec                   your door to
+                    tion to next                        tell the package
+                                                        arrived

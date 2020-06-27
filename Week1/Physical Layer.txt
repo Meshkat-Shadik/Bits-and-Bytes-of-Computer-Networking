@@ -1,0 +1,23 @@
+Moving ones and zeros:
+---------------------
+Bit:
+---
+A bit is the smallest representation of data that a computer can understand. It's a one or a zero.
+
+Modulation:
+-----------
+Ones and zeros are sent across those network cables through a process called modulation. Modulation is a way of varying the voltage of this charge moving across the cable.
+
+Why Twisted Cables?
+-------------------
+twisted nature helps protect against electromagnetic interference and crosstalk from neighboring pairs
+
+in all modern forms of networking, it's important to know that these cables allow for duplex communication.
+
+Duplex : both direction synchronously
+Simplex : One direction
+Full Duplex : both at a time
+
+Patch Panels:
+-------------
+A Patch panel is a device containing many net ports but it does no other work.
