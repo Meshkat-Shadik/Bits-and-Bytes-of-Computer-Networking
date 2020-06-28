@@ -1,0 +1,53 @@
+Responsible for multiplexing and de-multiplexing.
+This layer handles these operations through PORT.
+
+PORT:
+-----
+A 16 bit number that's used to direct traffic to specific services running on a networked computer.
+
+IP          : PORT
+192.168.1.1 : 80
+This is known as a socket address or socket number.
+
+FTP traditionally listens on PORT 21.
+
+Dissection of TCP Segment:
+--------------------------
+TCP Segment:
+------------
+Made up of a TCP header and a data section.
+
+
+-----------------------------------------------------------------------------------
+|           Source Port (16)              |             Destination Port (16)     | 
+------------------------------------------ ----------------------------------------
+|                              Sequence Number (32)                               |
+-----------------------------------------------------------------------------------
+|                              Acknowledgement Number (32)                        |
+-----------------------------------------------------------------------------------
+|   HLEN   |   Empty      | Ctrl Flags    |             Window(16)                |
+|   (4)    |    (6)       |    (6)        |                                       |
+-----------------------------------------------------------------------------------
+|            Checksum(16)                 |             Urgent (16)               |
+-----------------------------------------------------------------------------------
+|       Options (0 or 16 if any)          |               Padding                 |
+-----------------------------------------------------------------------------------
+|                              Data payload (varies)                              |
+-----------------------------------------------------------------------------------
+
+
+Source Port:
+------------
+A source port is a high numbered port chosen from a special section of ports known as ephemeral ports.
+
+
+Destination Port:
+-----------------
+The destination port is the port of the service the traffic is intended for.
+
+Sequence Number:
+----------------
+used to keep track of where in a sequence of TCP segments this one is expected to be
+
+Acknowledgement Number:
+-----------------------

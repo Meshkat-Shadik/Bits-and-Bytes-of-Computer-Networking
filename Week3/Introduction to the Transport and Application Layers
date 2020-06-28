@@ -1,0 +1,5 @@
+ how individual computer programs can communicate with each other.
+
+ *** Transport layer allows traffic to be directed to specific network applications. 
+ 
+***  Application layer allows these applications to communicate in a way they understand.

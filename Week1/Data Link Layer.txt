@@ -1,0 +1,30 @@
+Ethernet :
+----------
+The protocol most widely used to send data across individual links is known as Ethernet. 
+Ethernet, as a protocol, solved the problem collision between device communication by using a technique known as carrier sense multiple access with collision detection. (CSMA/CD).
+
+CSMA/CD:
+--------
+CSMA/CD is used to determine when the communications channels are clear and when the device is free to transmit data.
+
+MAC:
+---
+Media access control address.
+a globally unique identifier attached to an individual network interface
+48 bit, 6 groupings
+
+Octet:
+------
+any number that can be represented by 8 bits
+
+total number of possible MAC address is 2^48
+first 3 octets are Organizationally Unique Identifier (OUI)
+last 3 octets are Vendor Assigned (NIC Cards, Interface)
+
+UNI CAST:
+---------
+Just one receiving address
+
+LSB : 0 => Ethernet frame is intended for only the destination address
+LSB : 1 => Multicast frame
+all F => Broadcast address
