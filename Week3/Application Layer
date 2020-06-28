@@ -1,0 +1,21 @@
+************************************************************************************
+                                    OSI
+************************************************************************************
+ Application
+ Presentation
+ Session
+ Transport
+ Network
+ Data-link
+ Physical
+
+ Session:
+ --------
+ Facilitating the communication between actual applications and the transport layer.
+
+
+ Presentation:
+ -------------
+ Responsible for making sure that the un-encapsulated application layer data is able to be understood by the application in question.
+
+ Encryption or Compression of data.
