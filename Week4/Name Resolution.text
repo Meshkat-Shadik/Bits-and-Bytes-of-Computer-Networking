@@ -1,0 +1,48 @@
+************************************************************************************
+                                  Why do we need DNS
+************************************************************************************
+Domain Name System.
+That resolves strings of letters into IP addresses for you!
+DNS is a system that converts domain names into IP addresses
+
+DOMAIN Name:
+------------
+used for something that can be resolved by DNS. 
+
+www.weather.com -> domain Name
+and the IP -> changes for various reasons.
+
+The process that is used by DNS is known as name resolution.
+
+Five types of DNS servers:
+-------------------------
+
+1. Caching name servers.        (Generally provided by ISP)
+2. Recursive name servers.      (            ''           )
+3. Root name servers.
+4. TLD name servers.
+5. Authoritative name servers.
+
+AnyCast:
+--------
+ is a technique that's used to route traffic to different destinations depending on factors like location, congestion or link health.
+
+ TLD:
+ ----
+ TLD stands for top level domain and represents the top of the hierarchical DNS name resolution system. A TLD is the last part of any domain name, using www.facebook.com as an example again, the dot com portion should be thought of as the TLD.
+
+
+ 
+ ***********************************************************************************                                DNS & UDP
+ ***********************************************************************************
+ DNS uses UDP for the transport layer instead of TCP. 
+
+ The biggest difference between TCP and UDP is that UDP is connection-less. 
+ A single DNS request and its response can usually fit inside of a single UDP datagram, making it an ideal candidate for a connectionless protocol.
+
+ 
+ Via TCP
+ --------
+ First, the host that's making the DNS resolution request would send a SYN packet to the local name server on port 53, which is the port that DNS listens on.
+
+ This name server would then need to respond with a SYN ACK packet, that means the original host would have to respond with an ACK in order to complete the three-way-handshake. That's three packets.
