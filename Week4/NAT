@@ -76,4 +76,43 @@ In the simplest setup, a router setup to NAT outbound traffic, will just keep tr
 
 
   
-  This technique allows for complete IP masquerading, while still having services that can respond to incoming traffic. Let's use our network 10.1.1.0 \24 again to demonstrate this. Let's say there's a web server configured with an IP of 10.1.1.5. With port forwarding, no one would even have to know this IP. Prospective web clients would only have to know about the external IP of the router. Let's say it's 192.168.1.1. Any traffic directed at port 80 on 192.168.1.1, would get automatically forwarded to 10.1.1.5. Response traffic would have the source IP rewritten to look like the external IP of the router. This technique not only allows for IP masquerading, it also simplifies how external users might interact with lots of services all run by the same organization. Let's imagine a company with both a web server and mail server, both need to be accessible to the outside world but they run on different servers with different IPs. Again, let's say the web server has an IP of 10.1.1.5, and the mail server has an IP of 10.1.1.6. With port forwarding, traffic for either of these services could be aimed at the same external IP and therefore the same DNS name, but it would get delivered to entirely different internal servers due to their different destination ports.
+  This technique allows for complete IP masquerading, while still having services that can respond to incoming traffic. 
+  
+  
+  Let's use our network 10.1.1.0 \24 again to demonstrate this. Let's say there's a web server configured with an IP of 10.1.1.5. With port forwarding, no one would even have to know this IP. Prospective web clients would only have to know about the external IP of the router. Let's say it's 192.168.1.1. Any traffic directed at port 80 on 192.168.1.1, would get automatically forwarded to 10.1.1.5. Response traffic would have the source IP rewritten to look like the external IP of the router. This technique not only allows for IP masquerading, it also simplifies how external users might interact with lots of services all run by the same organization. 
+  
+  Let's imagine a company with both a web server and mail server, both need to be accessible to the outside world but they run on different servers with different IPs. Again, let's say the web server has an IP of 10.1.1.5, and the mail server has an IP of 10.1.1.6. With port forwarding, traffic for either of these services could be aimed at the same external IP and therefore the same DNS name, but it would get delivered to entirely different internal servers due to their different destination ports.
+
+
+
+
+
+  NAT, Non-Routable Address Space and the Limits of IPv4
+  *****************************************************************
+
+
+The IANA has been in charge of distributing IP addresses since 1988. Since that time, the internet has expanded at an incredible rate. The 4.2 billion possible IPv4 addresses have been predicted to run out for a long time and they almost have.
+
+
+For some time now, the IANA has primarily been responsible with assigning address blocks to the five regional internet registries or RIRs. 
+
+The five RIRs are AFRINIC, which serves the continent of Africa, ARIN which serves the United States, Canada and parts of the Caribbean. 
+APNIC, which is responsible for most of Asia, Australia and New Zealand and Pacific Island nations. 
+LACNIC which covers Central and South America and any parts of the Caribbean not covered by ARIN. 
+And finally RIPE, which serves Europe, Russia and the Middle East and portions of Central Asia.
+
+ 
+These five RIRs have been responsible for assigning IP address blocks to organizations within their geographic areas and most have already run out. The IANA assigned the last unallocated slash eight network blocks to various RIRs on February 3rd, 2011. Then in April 2011, APNIC ran out of addresses.
+
+RIPE was next, in September of 2012.
+
+LACNIC ran out of addresses to assign in June 2014. 
+And ARIN did the same in September 2015. 
+Only AFNIC has some IPs left, but those are predicted to be depleted by 2018.
+
+
+Wikipedia has a great article all about IPv4 exhaustion and the timelines involved. I've added a link to it in the reading just after this video. This is of course, a major crisis for the internet. IPv6 will eventually resolve these problems and we'll covered in more detail later in this course. But implementing IPv6 worldwide is going to take some time. For now, we wanted to continue to grow and we want more people and devices to connect to it but without IP addresses to assign, a workaround is needed. Spoiler alert, you already know about the major components of this workaround. NAT and non-routable address space.
+
+ Remember that non-routable address space was defined in RFC1918 and consists of several different IP ranges that anyone can use. And unlimited number of networks can use non-routable address space internally because internet routers won't forward traffic to it. This means there's never any global collision of IP addresses when people use those address spaces.
+ 
+  Non-routable address space is largely usable today because of technologies like NAT. With NAT, you can have hundreds even thousands of machines using non-routable address space. Yet, with just a single public IP, all those computers can still send traffic to and receive traffic from the internet. All you need is one single IPv4 address and via NAT, a router with that IP can represent lots and lots of computers behind it. It's not a perfect solution, but until IPv6 becomes more globally available, non-routable address space and NAT will have to do

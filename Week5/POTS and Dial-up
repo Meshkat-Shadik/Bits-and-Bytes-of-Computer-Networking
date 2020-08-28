@@ -1,0 +1,5 @@
+A dial-up connection uses POTS for data transfer, and gets its name because the connection is established by actually dialing a phone number.
+
+Transferring data across a dial-up connection is done through devices called modems. Modem stands for modulator demodulator, and they take data that computers can understand and turn them into audible wavelengths that can be transmitted over POTS.
+
+ A baud rate is a measurement of how many bits could be passed across a phone line in a second.

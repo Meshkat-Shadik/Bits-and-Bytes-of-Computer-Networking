@@ -1,0 +1,63 @@
+T-carrier technologies were originally invented by AT&T in order to transmit multiple phone calls over a single link.
+
+
+four of the most common broadband solutions available today: T-carrier technologies, 
+digital subscriber lines or DSL, 
+cable broadband, 
+and fiber connections. 
+
+
+T carrier Technologies:
+-----------------------
+
+T-carrier technologies were first invented by AT&T in order to provision a system that allowed lots of phone calls to travel across a single cable. 
+
+Every individual phone call was made over individual pairs of copper wire before Transmission System 1, the first T-carrier specification, called T1 for short.
+
+ With the T1 specification, AT&T invented a way to carry up to 24 simultaneous phone calls across a single piece of twisted pair copper. Years later, this same technology was repurposed for data transfers. Each of the 24 phone channels was capable of transmitting data at 64 kilobits per second, making a single T1 line capable of transmitting data at 1.544 megabits per second. Over the years, the phrase T1 has come to mean any twisted pair copper connection capable of speeds of 1.544 megabits per second, even if it doesn't strictly follow the original Transmission System 1 specification.
+
+
+Originally, T1 technology was only used to connect different telecom company sites to each other and to connect these companies to other telecom companies. But with the rise of the Internet as a useful business tool in the 1990s, more and more businesses started to pay to have T1 lines installed at their offices to have faster Internet connectivity. More improvements to the T1 line were made by developing a way of multiple T1s to act as a single link. So a T3 line is 28 T1s, all multiplexed, achieving a total throughput speed of 44.736 megabits per second.
+
+
+You'll still find T-carrier technologies in use today, but they've usually been surpassed by other broadband technologies. For small business offices, cable broadband or fiber connections are now way more common since they're much cheaper to operate. For inter-ISP communications, different fiber technologies have all replaced older copper-based ones.
+
+
+
+
+Digital Subscriber Lines
+*******************************************************************
+
+The public telephone network was a great option for getting people connected to the Internet since it already had infrastructure everywhere. For a long time, dial-up connections were the main way that people connected to the Internet from home.
+ But there were certain limitations with trying to transmit data as what were essentially just audio waves.
+ 
+  As people wanted faster and faster Internet access, telephone companies began to wonder if they could use the same infrastructure but in a different way.
+  
+  
+ The research showed that twisted pair copper used by modern telephone lines was capable of transmitting way more data than what was needed for voice-to-voice calls. 
+ 
+ By operating at a frequency range that didn't interfere with normal phone calls, a technology known as digital subscriber line or DSL was able to send much more data across the wire than traditional dial-up technologies.
+ 
+  To top it all off, this allowed for normal voice phone calls and data transfer to occur at the same time on the same line. Like how dial-up uses modems, DSL technologies also use their own modems. 
+  
+  But, more accurately, they're known as DSLAMs or Digital Subscriber Line Access Multiplexers.
+  
+  
+   Just like dial-up modems, these devices establish data connections across phone lines, but unlike dial-up connections, they're usually long-running. This means that the connection is generally established when the DSLAM is powered on and isn't torn down until the DSLAM is powered off.
+   
+    There are lots of different kinds of DSL available, but they all vary in a pretty minor way. For a long time, the two most common types of DSL were ADSL and SDSL. 
+    
+    ADSL stands for Asymmetric Digital Subscriber Line. ADSL connections feature different speeds for outbound and incoming data. Generally, this means faster download speeds and slower upload speeds. Home users rarely need to upload as much data as they download since home users are mostly just clients. For example, when you open a web page in a web browser, the upload or outbound data is pretty small. You're just asking for a certain web page from the web server. The download or inbound data tends to be much larger since it'll contain the entire web page including all images and other media. For this reason, asymmetric lines often provide a similar user experience for a typical home user, but at a lower cost. 
+    
+    SDSL, as you might be able to guess, stands for Symmetric Digital Subscriber Line. SDSL technology is basically the same as ADSL except the upload and download speeds are the same. 
+    
+    At one point, SDSL was mainly used by businesses that hosted servers that needed to send data to clients. As the general bandwidth available on the Internet has expanded and as the cost of operation have come down over the years, SDSL is now more common for both businesses and home users. Most SDSL technologies and have an upper cap of 1.544 megabits a second or the same as a T1 line. Further developments in SDSL technology have yielded things like 
+    
+    HDSL or High Bit-rate Digital Subscriber Lines. These are DSL technologies that provision speeds above 1.544 megabits per second. 
+    
+    There are lots of other minor variations in DSL technology out in the wild offering different bandwidth options and operating distances. These variations can be so numerous and minor, it's not really practical to try to cover them here. If you ever need to know more about a specific DSL line, you should contact the ISP that provides it for more details.
+
+
+Cable Broadband
+*******************************************************************
+
