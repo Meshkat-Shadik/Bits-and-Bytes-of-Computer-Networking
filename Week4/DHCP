@@ -1,0 +1,53 @@
+************************************************************************************
+                               Overview of DHCP
+************************************************************************************
+
+Every single computer on a modern TCP/IP based network needs to have at least four things to specifically configured. An IP Address, the subnet mask for the local network, a primary gateway, and a name server.
+
+DHCP is an application layer protocol that automates the configuration process of hosts on a network.
+
+NTP:
+----
+NTP stands for Network Time Protocol, and is used to keep all computers on a network synchronized in time. 
+
+
+***********************************************************************************
+                            DHCP in action
+***********************************************************************************     
+
+DHCP is an application layer protocol, which means it relies on the transport, network, data link and physical layers to operate. 
+
+DHCP discovery:
+---------------
+The process by which a client configured to use DHCP attempts to get network configuration information is known as DHCP discovery. 
+
+The DHCP discovery process has four steps.
+
+1. Server discovery step.
+
+     The DHCP clients sends what's known as a DHCP discover message out onto the network. Since the machine doesn't have an IP and it doesn't know the IP of the DHCP server, a specially crafted broadcast message is formed instead. DHCP listens on UDP port 67 and DHCP discovery messages are always sent from UDP port 68. So the DHCPDISCOVER message is encapsulated in a UDP datagram with a destination port of 67 and a source port of 68. This is then encapsulated inside of an IP datagram with a destination IP of 255.255.255.255, and a source IP of 0.0.0.0. This broadcast message would get delivered to every node on the local area network. And if a DHCP server is present, it would receive this message.
+
+
+2. DHCP server examine its own config
+
+    and would make a decision on what, if any, IP address to offer to the client. This would depend on if it's configured to run with dynamic, automatic or fixed address allocation. The response would be sent as a DHCPOFFER message with a destination port of 68, a source port of 67, a destination broadcast IP of 255.255.255.255, and its actual IP as the source.
+
+***
+DHCPOFFER has the field that specifies the MAC address of the client that sent the DHCPDISCOVER message.    
+
+
+Since the DHCP offer is also a broadcast, it would reach every machine on the network. The original client would recognize that this message was intended for itself. This is because the DHCPOFFER has the field that specifies the MAC address of the client that sent the DHCPDISCOVER message. The client machine would now process this DHCPOFFER to see what IP is being offered to it. Technically, a DHCP client could reject this offer. It's totally possible for multiple DHCP servers to be running on the same network, and for a DHCP client to be configured to only respond to an offer of an IP within a certain range. But this is rare.
+
+
+3. Response back
+
+    More often, the DHCP client would respond to the DHCPOFFER message with a DHCPREQUEST message. This message essentially says, yes, I would like to have an IP that you offer to me. Since the IP hasn't been assigned yet, this is again sent from an IP of 0.0.0.0, and to the broadcast IP of 255.255.255.255. Finally, the DHCP server receives the DHCPREQUEST message and responds with a DHCPACK or DHCP acknowledgement message. This message is again sent to a broadcast IP of 255.255.255.255, and with a source IP corresponding to the actual IP of the DHCP server. Again, the DHCP client would recognize that this message was intended for itself by inclusion of its MAC address in one of the message fields. The networking stack on the client computer can now use the configuration information presented to it by the DHCP server to set up its own network layer configuration.
+
+
+At this stage, the computer that's acting as the DHCP client should have all the information it needs to operate in a full fledged manner on the network it's connected to.
+
+
+All of this configuration is known as DHCP lease as it includes an expiration time. A DHCP lease might last for days or only for a short amount of time. Once a lease has expired, the DHCP client would need to negotiate a new lease by performing the entire DHCP discovery process all over again. A client can also release its lease to the DHCP server, which it would do when it disconnects from the network. This would allow the DHCP server to return the IP address that was assigned to its pool of available IPs.
+
+
+Now that you've seen DHCP in action, we've got a short quiz for you. When you're finished, it's time for you to learn the basics of NAT.

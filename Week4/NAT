@@ -1,0 +1,79 @@
+BASICS OF NAT
+*******************************************************************
+
+ is a technique instead of a defined standard. 
+
+it takes one IP address and translates it into another.
+
+ There are lots of reasons why you would want to do this. 
+ 
+ They range from security safeguards to preserving the limited amounts of available IPv4 space.
+ 
+
+*** how it can provide additional security measures to a network?
+
+ At its most basic level, NAT is a technology that allows a gateway, usually a router or firewall, to rewrite the source IP of an outgoing IP datagram while retaining the original IP in order to rewrite it into the response.
+ 
+ 
+  To explain this better, let's look at a simple NAT example. Let's say we have two networks.
+  
+Network A consists of the 10.1.1.0/24 address space and network B consists of the 192.168.1.0/24 address space. 
+
+Sitting between these networks is a router that has an interface on network A with an IP of 10.1.1.1 and an interface on network B of 192.168.1.1. Now, let's put two computers on these networks.
+
+ 
+Computer 1 is on network A and has an IP of 10.1.1.100. And computer 2 is on network B and has an IP of 192.168.1.100. 
+
+Computer 1 wants to communicate with a web server on computer 2. So it crafts the appropriate packet at all layers and sends this to its primary gateway, the router sitting between the two networks.
+
+So far, this is a lot like many of our earlier examples, but in this instance, the router is configured to perform NAT for any outbound packets. Normally, a router will inspect the contents of an IP datagram, decrement the TTL by 1, re-calculate the checksum, and forward the rest of the data at the network layer without touching it.
+
+But with NAT, the router will also rewrite the source IP address, which in this instance, becomes the router's IP on network B or 192.168.1.1. When the datagram gets to computer 2, it'll look like it originated from the router, not from computer 1.
+
+
+Now, computer 2 crafts its response and sends it back to the router. The router, knowing that this traffic is actually intended for computer 1, rewrites the destination IP field before forwarding it along. 
+
+
+IP masquerading:
+----------------
+hiding the IP of computer 1 from computer 2. This is known as IP masquerading.
+
+IP masquerading is an important security concept. The most basic concept at play here is that no one can establish a connection to your computer if they don't know what IP address it has.
+
+By using NAT in the way we've just described, we could actually have hundreds of computers on network A, all of their IPs being translated by the router to its own. To the outside world, the entire address space of network A is protected and invisible. This is known as one-to-many NAT, and you'll see it in use on lots of LANs today.
+
+
+
+
+NAT and The Transport Layer :
+*******************************************************************
+
+NAT at the network layer is pretty easy to follow. One IP address is translated to another by a device usually a router.
+
+But at the transport layer things get a little bit more complicated and several additional techniques come into play to make sure everything works properly.
+
+With one to many NAT, we've talked about how hundreds even thousands of computers can all have their outbound traffic translated via NAT to a single IP. This is pretty easy to understand when the traffic is outbound, but a little more complicated once return traffic is involved.
+
+We now have potentially hundreds of responses all directed at the same IP and the router at this IP needs to figure out which responses go to which computer. The simplest way to do this, is through port preservation.
+ 
+PORT PRESERVATION:
+------------------
+Port preservation is a technique where the source port chosen by a client, is the same port used by the router.
+ 
+
+ Remember that outbound connections choose a source port at random, from the ephemeral ports or the ports in the range 49,152 through 65, 535.
+ 
+In the simplest setup, a router setup to NAT outbound traffic, will just keep track of what this source port is, and use that to direct traffic back to the right computer.
+
+ Let's imagine a device with an IP of 10.1.1.100. It wants to establish an outbound connection and the networking stack of the operating system chooses port 51,300 for this connection. Once this outbound connection gets to the router, it performs network address translation and places its own IP in the source address field of the IP datagram, but it leaves the source port in the TCP datagram the same and stores this data internally in a table. Now, when traffic returns to the router and port 51,300, it knows that this traffic needs to be forwarded back to the IP 10.1.1.100. Even with how large the set of ephemeral ports is, it's still possible for two different computers on a network to both choose the same source port around the same time. When this happens, the router normally selects an unused port at random to use instead.
+ 
+ 
+  Another important concept about NAT and the transport layer, is port forwarding. 
+  
+  PORT FORWARDING:
+  ----------------
+     Port forwarding is a technique where a specific destination ports can be configured to always be delivered to specific nodes.
+
+
+  
+  This technique allows for complete IP masquerading, while still having services that can respond to incoming traffic. Let's use our network 10.1.1.0 \24 again to demonstrate this. Let's say there's a web server configured with an IP of 10.1.1.5. With port forwarding, no one would even have to know this IP. Prospective web clients would only have to know about the external IP of the router. Let's say it's 192.168.1.1. Any traffic directed at port 80 on 192.168.1.1, would get automatically forwarded to 10.1.1.5. Response traffic would have the source IP rewritten to look like the external IP of the router. This technique not only allows for IP masquerading, it also simplifies how external users might interact with lots of services all run by the same organization. Let's imagine a company with both a web server and mail server, both need to be accessible to the outside world but they run on different servers with different IPs. Again, let's say the web server has an IP of 10.1.1.5, and the mail server has an IP of 10.1.1.6. With port forwarding, traffic for either of these services could be aimed at the same external IP and therefore the same DNS name, but it would get delivered to entirely different internal servers due to their different destination ports.

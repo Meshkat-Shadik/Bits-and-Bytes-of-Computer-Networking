@@ -1,0 +1,69 @@
+************************************************************************************
+                                Resource Record Types
+************************************************************************************
+DNS in practice operates with a set of defined resource record types.
+
+A record:
+---------
+An A record is used to point a certain domain name at a certain IPv4 IP address.
+
+DNS Round Robin:
+----------------
+A single domain name can have multiple A records, too. This allows for a technique known as DNS round robin to be used to balance traffic across multiple IPs. Round robin is a concept that involves iterating over a list of items one by one in an orderly fashion. 
+
+Quad A record:
+--------------
+is very similar to an A record except that it returns in IPv6 address instead of an IPv4 address.
+
+CNAME Record:
+-------------
+A CNAME record is used to redirect traffic from one domain to another.
+
+MX Record:
+----------
+Mail exchange, is used to deliver a e-mail to the correct server.
+
+SRV Record:
+-----------
+Service record, define the location of various specific services. 
+
+Txt Record:
+-----------
+
+************************************************************************************
+                            Anatomy of a Domain name
+************************************************************************************
+
+www . google . com      (FQDN (fully qualified domain name))
+
+.com - tld (Managed by ICANN (internet corporation for assigned names and numbers))
+google - domain 
+www - subdomain
+
+DNS can technically support up to 127 levels of domain in total for a single fully qualified domain name.
+
+There are some other restrictions in place for how your domain name can be specified. Each individual section can only be 63 characters long and a complete FQDN is limited to a total of 255 characters
+
+
+************************************************************************************
+                                     DNS Zones
+************************************************************************************
+DNS zones are a hierarchical concept. The root name servers we covered earlier are responsible for the root zone. Each TLD name server is responsible for the zone covering its specific TLD.
+The purpose of DNS zones is to allow for easier control over multiple levels of a domain.
+
+Zone File:
+----------
+simple configuration files that declare all resource records for a particular zone.
+So a zone file has to contain an SOA, or a Start of Authority resource record declaration.
+
+SOA record:
+-----------
+This SOA record declares the zone and the name of the name server that is authoritative for it. 
+
+NS records:
+-----------
+which indicate other name servers that may also be responsible for this zone.
+
+reverse lookup zone files:
+--------------------------
+These let DNS resolvers ask for an IP, and get the FQDN associated with it returned. These files are the same as zone files except, instead of A and quad A records, which resolve names to IPs,
