@@ -1,0 +1,146 @@
+The most common specifications for how wireless networking devices should communicate, are defined by the IEEE 802.11 standards. 
+
+Wireless networking devices communicate with each other through radiowaves.
+
+Different 802.11 standards generally use the same basic protocol, but might operate at different frequency bands.
+
+Frequency Band:
+--------------
+A frequency band is a certain section of the radio spectrum that's been agreed upon to be used for certain communications. 
+
+The most common specifications you might run into are 802.11b, 802.11a, 802.11g, 802.11n, and 802.11ac.
+
+
+
+802.11 frame
+
+    2       2         6       6       6       2        6     0-7951     4
+-----------------------------------------------------------------------------
+|frame  |Duration/|Address|Address|Address|Sequence|Address| data   |       |
+|control|ID       |   1   |   2   |   3   |control |   4   |payload |   FCS |
+|       |         |       |       |       |        |       |        |       |
+-----------------------------------------------------------------------------
+                  <-------------------------MAC HEADER-------------->
+
+
+The first is called the frame control field. This field is 16 bits long, and contains a number of sub-fields that are used to describe how the frame itself should be processed. This includes things like what version of the 802.11 was used. 
+
+The next field is called a duration field. It specifies how long the total frame is. So, the receiver knows how long it should expect to have to listen to the transmission. 
+
+After this, are four address fields. Let's take a moment to talk about why there are four instead of the normal two. We'll discuss different types of wireless network architectures in more detail later in this lesson, but the most common setup includes devices called access points.
+
+Wireless Access point:
+----------------------
+ A wireless access point is a device that bridges the wireless and wired portions of a network.
+
+
+ A single wireless network might have lots of different access points to cover a large area. Devices on a wireless network will associate with a certain access point. This is usually the one they're physically closest to. But, it can also be determined by all sorts of other things like general signal strength, and wireless interference. 
+ Associations isn't just important for the wireless device to talk to a specific access point, it also allows for incoming transmissions to the wireless device to be sent by the right access point.
+ 
+  There are four address fields, because there needs to be room to indicate which wireless access point should be processing the frame.
+  
+   So, we'd have our normal source address field, which would represent the MAC address of the sending device.
+    But, we'd also have the intended destination on the network, along with a receiving address and a transmitter address. 
+    The receiver address would be the MAC address of the access point that should receive the frame,
+     and the transmitter address would be the MAC address of whatever has just transmitted the frame.
+     
+     
+      In lots of situations, the destination and receiver address might be the same. Usually, the source and transmitter addresses are also the same.
+       But, depending on exactly how a specific wireless network has been architected, this won't always be the case.
+        Sometimes, wireless access points will relay these frames from one another. Since all addresses in an 802.11 frame are Mac addresses, each of those four fields is 6 bytes long.
+        
+         In between the third and fourth address fields, you'll find the sequence control field. 
+         
+         The sequence control field is 16 bits long and mainly contains a sequence number used to keep track of ordering the frames.
+         
+          After this is the data payload section which has all of the data of the protocols further up the stack. 
+          
+          Finally, we have a frame check sequence field which contains a checksum used for a cyclical redundancy check. Just like how ethernet does it.
+
+
+
+Wireless Network Configurations
+************************************************************************************
+
+There are a few main ways that a wireless network can be configured.
+
+ *** ad-hoc networks where nodes all speak directly to each other. 
+ *** wireless LANS or WLANS where one or more access points act as a bridge between a wireless and a wired network. 
+ *** mesh networks which are kind of a hybrid of the two.
+ 
+ 
+ 
+  Ad-hoc networks are the simplest of the three, in an ad-hoc network, there isn't really any supporting network infrastructure. Every device involved with the network communicates with every other device within range and all nodes help pass along messages. Even though they're the most simple, ad-hoc networks aren't the most common type of wireless network, but they do have some practical applications. Some smartphones can establish ad-hoc networks with other smartphones in the area so that people can exchange photos, video or contact information. You'll also sometimes see ad-hoc networks used in industrial or warehouse settings, where individual pieces of equipment might need to communicate with each other, but not with anything else. Finally, ad-hoc networks can be powerful tools during disaster situations. If a natural disaster like an earthquake or hurricane knocks out all of the existing infrastructure in an area, disaster relief professionals can use an ad-hoc network to communicate with each other while they perform search and rescue efforts.
+
+
+The most common type of wireless network you'll run into in the business world is a wireless LAN or WLAN. 
+A wireless LAN consists of one or more access points, which act as bridges between the wireless and wired networks. The wired network operates as a normal LAN, like the types we've already discussed, the wired LAN contains the outbound internet link. In order to access resources outside of the WLAN, wireless devices would communicate with access points. They then forward traffic along to the gateway router, where everything proceeds like normal.
+
+ Finally, we have what's known as mesh networks. Mesh networks are kind of like ad-hoc networks, since lots of the devices communicate with each other wirelessly, forming a mesh. If you were to draw lines for all the links between all the nodes, most mesh networks you'll run into are made up of only wireless access points and will still be connected to a wired network. This kind of network let's you deploy more access points to the mesh without having to run a cable to each of them. With this kind of setup, you can really increase the performance and range of a wireless network.
+
+
+
+ Wireless Channels
+ ***********************************************************************************
+
+ The concept of channels is one of the most important things to understand about wireless networking.
+ 
+ Channels:
+ ---------
+  Channels are individual, smaller sections of the overall frequency band used by a wireless network.
+  
+   Channels are super important because they help address a very old networking concern, collision domains. 
+   
+Collision Domain:
+-----------------
+   is any one network segment where one computer can interrupt another. 
+   
+   
+   Communications that overlap each other can't be properly understood by the receiving end. So when two or more transmissions occur at the same time, also called a collision, all devices in question have to stop their transmissions. They wait a random amount of time and try again when things quiet down. This really slows things down. The problem caused by collision domains has been mostly reduced on wired networks through devices called switches.
+   
+   
+    Switches remember which computers live on which physical interfaces. So traffic is only sent to the node It's intended for. Wireless networking doesn't have cables, so there aren't physical interfaces for a wireless device to connect to. That means, we can have something that works like a wireless switch. Wireless devices are doomed to talk over each other. 
+    
+    
+    Channels help fix this problem to a certain extent. When we were talking about the concept the frequency bands, we mentioned that FM radio in North America operates between 80 megahertz and 108 megahertz. But when we discuss the frequency bands we use by Wi-Fi, we just mentioned 2.4 Gigahertz and five Gigahertz. This is because that's really just shorthand for where these frequency bands actually begin. For wireless networks that operate on a 2.4 Gigahertz band, what we really mean is that they operate on roughly the band from 2.4 Gigahertz to 2.5 Gigahertz. Between these two frequencies are a number of channels, each with a width of a certain megahertz. Since different countries and regions have different regulatory committees for what radio frequencies might be used for what, exactly how many channels are available for use depends on where in the world you are.
+    
+     For example, dealing with an 802.11b network, channel one operates at 2412 megahertz, but since the channel width is 22 megahertz, the signal really lives on the frequencies between 2401 megahertz and 2423 megahertz. This is because radio waves are imprecise things. So, you need some buffer around what exact frequencies a transmission might actually arrive on. Some channels overlap but some are far enough apart so they won't interfere with each other at all. Let's look again at 802.11b network running on a 2.4 Gigahertz band, because it's really the simplest and the concepts translate to all other 802.11 specifications. 
+     
+     With a channel width of 22 megahertz, channel one with its midpoint at 2412 megahertz, is always completely isolated from channel six with its midpoint at 2437 megahertz. For an 802.11b network, this means that channels one and six and 11 are the only ones that never overlap at all. 
+     
+     That's not all that matters, though. Today, most wireless networking equipment is built to auto sense what channels are most congested. Some access points will only perform this analysis when they start up, others will dynamically change their channel as needed. Between those two scenarios and manually specified channels, you can still run into situations where you experience heavy channel congestion. This is especially true in dense urban areas with lots of wireless networks in close proximity. 
+     
+     So, why is this important in the world of I.T. support? Well, understanding how these channels overlap for all of the 802.11 specifications is a way you can help troubleshoot bad wireless connectivity problems or slowdowns in the network. You want to avoid collision domains wherever you can. I should call out that it's not important to memorize all of the individual numbers we've talked about. The point is to understand how collision domains are a necessary problem with all wireless networks, and how you can use your knowledge in this space to optimize wireless network deployments. You want to make sure that both your own access points and those of neighboring businesses overlap channels as little as possible.
+
+
+Wireless Security
+*******************************************************************************
+
+     WEP
+     ---
+     WEP stands for Wired Equivalent Privacy.  and it's an encryption technology that provides a very low level of privacy.
+     WEP only uses 40 bits for its encryption keys and with the speed of modern computers, 
+     '
+
+     WPA
+     ---
+     WiFi Protected Access
+     128 bit key
+    Today, the most commonly used encryption algorithm for wireless networks is WPA2, an update to the original WPA. WPA2 uses a 256-bit key make it even harder to crack.
+
+
+    MAC Filtering:
+    --------------
+    you configure your access points to only allow for connections from a specific set of MAC addresses belonging to devices you trust. 
+
+
+
+Cellular Networking
+************************************************************************************
+
+Another super popular form of wireless networking is cellular networking, also called mobile networking. Cellular networks are now common all over the world.
+ In some places, using a cellular network for Internet access is the most common way of connecting. 
+ At a high level, cellular networks have a lot in common with the 802.11 networks we've already talked about. Just like there are many different 802.11 specifications, there are lots of different cellular specifications. Just like Wi-Fi, cellular networking operates over radio waves, and there are specific frequency bands specifically reserved for cellular transmissions. One of the biggest differences is that these frequencies can travel over longer distances more easily, usually over many kilometers or miles.
+
+
+Cellular networks are built around the concept of cells. Each cell is assigned a specific frequency band for use. Neighboring cells are set up to use bands that don't overlap, just like how we discussed the optimal setup for a WLan with multiple access points. In fact, the cell towers that broadcast and receive cellular transmissions can be thought of like access points, just with a much larger range. Lots of devices today use cellular networks for communication. And not just phones, also tablets and some laptops also have cellular antennas. It's become more and more common for high-end automobiles to have built-in cellular access, too.

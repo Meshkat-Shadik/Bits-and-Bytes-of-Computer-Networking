@@ -59,5 +59,42 @@ The public telephone network was a great option for getting people connected to 
 
 
 Cable Broadband
-*******************************************************************
+************************************************************************************
 
+ One of the main differences in how cable Internet access works when compared to other broadband solutions is that cable is generally what's known as a shared bandwidth technology
+
+
+ cable modem.
+ ------------
+  This is a device that sits at the edge of a consumer's network and connects it to the cable modem termination system, or CMTS.
+  
+  CMTS
+  -----
+   The CMTS is what connects lots of different cable connections to an ISP's core network.
+
+
+
+
+Fiber Connections
+*********************************************************************************** 
+
+FTTX
+-----
+FTTX stands for fiber to the X, where the X can be one of many things
+
+FTTN:
+-----
+fiber to the neighborhood. This means that fiber technologies are used to deliver data to a single physical cabinet that serves a certain amount of the population
+
+FTTB:
+-----
+Fiber to the business or even fiber to the basement.
+FTTB is a setup where fiber technologies are used for data delivery to an individual building.
+
+FTTH:
+-----
+ fiber to the home
+
+ONT (optical network terminator):
+----------------------------------
+In ONT, converts data from protocols, the fiber network can understand to those that more traditional twisted pair copper networks can understand.

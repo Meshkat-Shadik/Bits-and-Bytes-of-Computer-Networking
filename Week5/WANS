@@ -1,0 +1,28 @@
+WHY WAN?
+*******************************************************************
+Let's say that you're in charge of the network as the sole IT support specialist at a small company. At first, the business only has a few employees with a few computers in a single office. You decide to use non-routable address space for the internal IPs because IP addresses are scarce and expensive. You set up a router and configure it to perform NAT. You configure a local DNS server and a DHCP server to make network configuration easier. And of course, for all of this to really work, you sign a contract with an ISP to deliver a link to the Internet to this office, so your users can access the web.
+
+Now, imagine the company grows. You're using non-routable address space for your internal IPs, so you have plenty of space to grow there. May be some sales people will need to connect to resources on the LAN you set up while they're on the road. So you configure a VPN server and make sure the VPN server is accessible via port forwarding. Now, you can have employees from all over the world connect to the office LAN. Business is good, and the company keeps growing. The CEO decides that it's time to open a new office in another city across the country. Suddenly, instead of a handful of sales people requiring remote access to the resources on your network, you have an entire second office that needs it. This is where wide area networks or WAN technologies come into play. Unlike a LAN or a local area network, WAN stands for wide area network. A wide area network acts like a single network, but spans across multiple physical locations. WAN technologies usually require that you contract a link across the Internet with your ISP. This ISP handles sending your data from one site to the other. So it could be like all of your computers are in the same physical location. A typical WAN setup has a few sections. Imagine one network of computers on one side of the country and another network of computers on the other. Each of those networks ends at a demarcation point, which is where the ISP's network takes over.
+
+
+Local loop:
+-----------
+ The area between each demarcation point and the ISP's actual core network is called a local loop. 
+
+This local loop would be something like a T-carrier line or a high speed optical connection to the provider's local regional office. From there, it would connect out to the ISP's core network and the Internet at large. WANs work by using a number of different protocols at the data link layer to transport your data from one site to another. In fact, these same protocols are what are sometimes at work at the core of the Internet itself, instead of are more familiar ethernet.
+
+Covering all the details of these protocols is out of the scope of this course. But in an upcoming lesson, we'll give you some links to the most popular WA
+
+
+Point-to-Point VPNs
+*******************************************************************
+A popular alternative to Whann technologies are point-to-point VPNs. 
+WAN technologies are great for when you need to transport large amounts of data across lots of sites, because WAN technologies are built to be super fast. A business cable or DSL line might be way cheaper but it just can't handle the load required in some of these situations. 
+
+But over the last few years, companies have been moving more and more of their internal services into the cloud. We'll cover exactly what this means later, but for now, it's enough to know that the cloud lets companies outsource all or part of their different pieces of infrastructure to other companies to manage. 
+
+Let's take the concept of email. In the past, a company would have to run their own email server if they wanted an email presence at all. Today, you could just have a cloud hosting provider host your email server for you. You could even go a step further and using email as a service provider, then you wouldn't have an email server at all anymore. You just have to pay another company to handle everything about your email service. With these types of cloud solutions in place, lots of businesses no longer require extreme high speed connections between their sites. This makes the expense of a WAN technology totally unnecessary. 
+
+Instead, companies can use point-to-point VPNs to make sure that there are different sites can still communicate with each other.
+
+ A point-to-point VPN, also called a site-to-site VPN, establishes a VPN tunnel between two sites. This operates a lot like the way that a traditional VPN setup lets individual users act as if they are on the network they're connecting to. It's just that the VPN tunneling logic is handled by network devices at either side, so that users don't all have to establish their own connections. Now, it's time for one more quiz to see how your connections are firing.
