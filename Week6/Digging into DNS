@@ -1,0 +1,94 @@
+Name Resolution Tools
+************************************************************************************
+
+
+Name resolution is an important part of how the Internet works. Most of the time, your operating system handles all look ups for you. But as an IT support specialist, sometimes it can be useful to run these queries yourself, so you can see exactly what's happening behind the scenes. Luckily, there are lots of different command line tools out there to help you with this. The most common tool is known as nslookup. And it's available on all three of the operating systems we've been discussing, Linux, Mac, and Windows.
+
+ A basic use of nslookup is pretty simple. You execute the nslookup command with the host name following it. And the output displays what server was used to perform the request and the resolution result. Let's say you needed to know the IP address for a twitter.com. You would just enter nslookup twitter.com and the A record would be returned.
+
+
+Nslookup is way more powerful than just that. It includes an interactive mode that lets you set additional options and run lots of queries in a row. 
+
+To start an interactive nslookup session, you just enter nslookup, without any hostname following it. You should see an angle bracket acting as your prompt. From interactive mode, you can make lots of requests in a row. You can also perform some extra configuration to help with more in-depth trouble shooting. While in interactive mode, 
+if you type server, then an address, all the following name resolution queries will be attempted to be made using that server instead of the default name server.
+
+
+You can also enter set type= followed by a resource record type. By default, nslookup will return A records. But this lets you explicitly ask for AAAA or MX or even text records associated with the host.
+
+
+If you really want to see exactly what's going on, you can enter set debug. This will allow the tool to display the full response packets, including any intermediary requests and all of their contents. Warning, this is a lot of data and can contain details like the TTL left, if it's a cached response, all the way to the serial number of the zone file the request was made against.
+
+
+Public DNS Servers
+************************************************************************************
+Having functional DNS is an important part of a functional network.
+
+ An ISP almost always gives you access to a recursive name server as part of the service it provides.
+ 
+  In most cases, these name servers are all you really need for your computer to communicate with other devices on the internet. But, most businesses also run their own DNS servers. 
+  
+  In the very least, this is needed to resolve names of internal hosts. Anything from naming a computer, Nayas dash laptop, to being able to refer to a printer by name instead of an IP requires your own name server.
+  
+   A third option is to use a DNS as a service provider, and it's getting more and more popular. Don't worry, we'll cover that concept more in an upcoming lesson. No matter what DNS service model you're using on your network, it's useful to have a way to test DNS functionality in case you suspect something isn't working right. It can also be super useful to have a backup DNS option in case you experience problems with your own. 
+   
+   You might even be in the early stages of building out a new network. And even if you plan to have your own name server eventually, it may not be ready for use. 
+   
+   Some internet organizations run what are called public DNS servers, which are name servers specifically set up so that anyone can use them for free.
+   
+    Using these public DNS servers is a handy technique for troubleshooting any kind of name resolution problems you might be experiencing. Some people just use these name servers for all the resolution needs. For a longtime, public DNS servers were a kind of tribal knowledge passed down from one sysadmin to another. 
+    
+    In ancient sysadmin law, it said that for many years the most commonly used public DNS servers were those run by Level 3 communications. One of the largest ISPs in the world.
+    
+     Level 3 is, in fact, so large. They mostly do business by selling connectivity to their network, to other ISPs that actually deal with consumers instead of dealing with end-users themselves. The IP addresses for Level 3s public DNS servers are 4.2.2.1 through 4.2.2.6.
+     
+      These IPs are easy to remember but they've always been shrouded in a bit of a mystery. While they've been available for use by the public for almost 20 years now, it's not a service Level 3 officially has ever acknowledged or advertised. Why? We might never know. It's one of the great mysteries of our ancient sysadmin law. Anyway, other easy to remember options are the IPs for Google's public DNS. Google operates public name servers on the IPs 8.8.8.8 and 8.8.4.4. 
+      
+      Unlike the Level 3 IPs, these are officially acknowledged and documented by Google to be used for free by anyone. 
+      
+      Most public DNS servers are available globally through anycast. 
+      
+      Lots of other organizations also provide public DNS servers, but few are as easy to remember as those two options. Always do your research before configuring any of your devices to use that type of name server. 
+      
+      Hijacking outbound DNS requests with faulty responses is an easy way to redirect your users to malicious sites. Always make sure the name server is run by a reputable company, and try to use the name servers provided by your ISP outside of troubleshooting scenarios. Most public DNS servers also respond to ICMP echo requests, so they're a great choice for testing general internet connectivity using ping.
+
+
+
+
+DNS Registration and Expiration
+************************************************************************************
+ Remember that DNS is a global system managed in a tiered hierarchy with I can at the top level. 
+ Domain names need to be globally unique for a global system like this to work. You can't just have anyone decide to use any domain name. It would be chaos. 
+ 
+
+ registrar
+ ----------
+ Enter the idea of a registrar, an organization responsible for assigning individual domain names to other organizations or individuals. 
+ 
+ Originally there were only a few registrars. 
+ 
+ The most notable was a company named Network Solutions Inc.
+ 
+  It was responsible for the registration of almost all domains that weren't country specific. As the popularity of the Internet grew, there was eventually enough market demand for competition in this space. Finally, the United States government and Network Solutions Inc came to an agreement to let other companies also sell domain names. Today, there are hundreds of companies like this all over the world.
+  
+   Registering a domain name for use is pretty simple. Basically, you create an account with the registrar, use their web UI to search for a domain name to determine if it's still available, then you agree upon a price to pay, and the length of your registration.
+    Once you own the domain name, you can either have the registrar's name servers act as the authoritative name servers for the domain, or you can configure your own servers to be authoritative.
+    
+     Domain names can also be transferred by one party to another, and from one registrar to another.
+      The way this usually works is that the recipient registrar will generate a unique string of characters to prove that you own the domain and that you're allowed to transfer it to someone else.
+      
+       You configure your DNS settings to contain this string in a specific record, usually a text record. Once this information has propagated, it can be confirmed that you both own the domain and approve its transfer. After that, ownership would move to the new owner or registrar.
+
+An important part of domain name registration is that these registrations only exist for a fixed amount of time. You typically pay to register domain names for a certain number of years. It's important to keep on top of when your domain names might expire, because once they do, they're up for grabs and anyone else could register them.
+
+
+
+Hosts Files
+************************************************************************************
+The original way that numbered network addresses were correlated with words was through hosts files. A host file is a flat file that contains, on each line, a network address followed by the host name.
+
+loopback address.
+-----------------
+ A loopback address always points to itself, so a loopback address is a way of sending network traffic to yourself.
+  Sending traffic to a loop back address bypasses all network infrastructure itself and traffic like that never leaves the node.
+
+  ::1 localhost where ::1 is the loop back address for IPv 6. 

@@ -1,0 +1,85 @@
+The biggest difference between IPv4 and IPv6 is the number of bits reserved for an address, while IPv4 addresses are 32 bits, meaning there can be around 4.2 billion individual addresses. IPv6 addresses are 128 bits in size. 
+
+An Undecillion isn't a number you hear a lot, because it's ginormous. 
+
+ 2001:0db8 has been reserved for documentation, in education, or for books and courses,
+
+ There are two rules when it comes to shortening an IPv6 address. The first is that you can remove any leading zeros from a group. The second is that any number of consecutive groups composed of just zeros can be replaced with two colons. 
+
+
+ With IPv6, the loopback address is 31 0s with a 1 at the end, which can be condensed all the way down to just ::1.
+
+
+ any address that begins with FF00:: is used for multicast, 
+ 
+ which is a way of addressing groups of hosts all at once.
+
+
+ FF00:: multicast
+ FE80:: link-local unicast
+ 
+  Link-local unicast addresses allow for local network segment communications, and are configured based upon a host's MAC address.
+
+
+
+
+  IPV6 Headers:
+*******************************************************************
+
+
+One of the most elegant improvements was made to the IPv6 header, which is much simpler than the IPv4 one. 
+
+header
+-------
+The first field in an IPv6 header is the version field. This is a 4-bit field that defines what version of IP is in use.
+
+
+traffic class field
+--------------------
+The next field is called the traffic class field. This is an 8-bit field that defines the type of traffic contained within the IP datagram and allows for different classes of traffic to receive different priorities.
+
+flow level field
+----------------
+The next field is the flow label field. This is a 20-bit field that's used in conjunction with the traffic class field for routers to make decisions about the quality of service level for a specific datagram.
+
+payload length
+--------------
+Next you have the payload length field. This is a 16-bit field that defines how long the data payload section of the datagram is.
+
+next header
+-----------
+Then you have the next header field. This is a unique concept to IPv6, and needs a little extra explanation.
+
+IPv6 addresses are four times as long as IPv4 addresses. That means they have more ones and zeros, which means that they take longer to transmit across a link. To help reduce the problems with additional data that IPv6 addresses impose on the network, the IPv6 header was built to be as short as possible. One way to do that is to take all of the optional fields and abstract them away from the IPv6 header itself.
+
+ The next header field defines what kind of header is immediately after this current one. These additional headers are optional, so they're not required for a complete IPv6 datagram. Each of these additional optional headers contain a next header field and allow for a chain of headers to be formed if there's a lot of optional configuration.
+
+hop limit field
+----------------
+Next we have what's called the hop limit field. This is an 8-bit field that's identical in purpose to the TTL field in an IPv4 header.
+
+source and destination address field
+------------------------------------
+ Finally, we have the source and destination address fields, which are each a 128 bits. If the next header field specified another header, it would follow at this time. If not, a data payload the same length as specified in the payload length field would follow.
+
+
+
+
+ Harmony
+*******************************************************************
+
+Any IPv6 address that begins with 80 zeros, and is then followed by 16 ones is understood to be part of the IPv4 mapped address space.
+
+
+
+Tunnels:
+--------
+The primary way this is achieve today is through IPv6 tunnels. IPv6 tunnels are conceptually pretty simple. They consist of IPv6 tunnels servers on either end of a connection.
+ These IPv6 tunnel servers take incoming IPv6 traffic and encapsulate it within traditional IPv4 datagrams. 
+
+This is then delivered across the IPv4 Internet space where it's received by another IPv6 tunnel server. That server performs the de-encapsulation and passes the IPv6 traffic further along in the network. Along with IPv6 tunnel technologies, the concept of an IPv6 tunnel broker has also emerged. These are companies that provide IPv6 tunneling endpoints for you, so you don't have to introduce additional equipment to your network.
+
+
+tunnel broker
+-------------
+These are companies that provide IPv6 tunneling endpoints for you, so you don't have to introduce additional equipment to your network.

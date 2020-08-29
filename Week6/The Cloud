@@ -1,0 +1,49 @@
+What is the cloud?
+************************************************************************************
+
+cloud computing
+---------------
+ is a technological approach where computing resources are provisioned in a shareable way so that lots of users get what they need when they need it.
+
+ At the heart of cloud computing is a technology known as hardware virtualization.
+
+ Hardware Virtualization"
+ ------------------------
+ Hardware virtualization is a core concept of how cloud computing technologies work. It allows the concept of a physical machine and a logical machine to be abstracted away from each other.
+ 
+  With virtualization, a single physical machine called a host could run many individual virtual instances called guests
+
+Hypervisor"
+-----------
+A hypervisor is a piece of software that runs and manages virtual machines while also offering these guests a virtual operating platform that's indistinguishable from actual hardware.  
+
+
+public cloud
+-------------
+ is, a large cluster of machines run by another company. 
+
+A private cloud
+----------------
+ takes the same concepts, but instead, it's entirely used by a single large corporation and generally physically hosted on its own premises.
+
+  hybrid cloud, 
+---------------
+  isn't really a separate concept. It's just a term used to describe situations where companies might run things like their most sensitive proprietary technologies on a private cloud while entrusting their less sensitive servers to a public cloud. 
+
+
+   X as a service.
+   ---------------
+
+   infrastructure as a service or IaaS. 
+   -------------------------------------
+   infrastructure as a service is that you shouldn't have to worry about building your own network or your own servers. You just pay someone else to provide you with that service. 
+
+
+   PaaS
+   -----
+    Platform as a service is a subset of cloud computing where a platform is provided for customers to run their services. This basically means that an execution engine is provided for whatever software someone wants to run
+
+
+
+*** Infrastructure as a service abstracts away the physical infrastructure you need 
+*** and platform as a service abstracts away the server instances you need.    
